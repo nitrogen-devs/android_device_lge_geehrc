@@ -117,7 +117,7 @@ MALLOC_IMPL := dlmalloc
 
 #TWRP config
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
-TW_SECONDARY_BRIGHTNESS_PATH := /sys/class/leds/button-backlight/brightness
+#TW_SECONDARY_BRIGHTNESS_PATH := /sys/class/leds/button-backlight/brightness
 TW_MAX_BRIGHTNESS := 250
 TW_THEME := portrait_hdpi
 RECOVERY_SDCARD_ON_DATA := true
@@ -132,5 +132,20 @@ TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/usb-otg"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "usb-otg"
+
+#MultiROM config. MultiROM also uses parts of TWRP config
+TARGET_RECOVERY_IS_MULTIROM := true
+BOOT_DEV := /dev/block/platform/msm_sdcc.1/by-name/boot
+MR_PIXEL_FORMAT := "RGBX_8888"
+MR_INPUT_TYPE := type_b
+MR_INIT_DEVICES := device/lge/geehrc/mr_init_devices.c
+MR_RD_ADDR := 0x82000000
+MR_DPI := hdpi
+MR_DPI_FONT := 216
+MR_FSTAB := device/lge/geehrc/twrp.fstab
+MR_KEXEC_MEM_MIN := 0x84000000
+MR_INFOS := device/lge/geehrc/mrom_infos
+MR_DEVICE_RECOVERY_HOOKS := device/lge/geehrc/mr_hooks_recovery.c
+MR_DEVICE_RECOVERY_HOOKS_VER := 1
 
 -include vendor/lge/geehrc/BoardConfigVendor.mk
